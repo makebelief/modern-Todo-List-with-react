@@ -22,6 +22,11 @@ function App() {
     setTasks(updatedTasks);
   };
 
+  const handleDelete = (id) => {
+    const updatedTasks = tasks.filter((t) => t.id !== id);
+    setTasks(updatedTasks);
+  };
+
   return (
     <div style={{ maxWidth: '400px', margin: '50px auto', textAlign: 'center' }}>
       <h2>To-Do List</h2>
@@ -36,16 +41,20 @@ function App() {
 
       <ul style={{ textAlign: 'left', padding: '0' }}>
         {tasks.map((t) => (
-          <li key={t.id} style={{ listStyle: 'none', margin: '10px 0' }}>
+          <li key={t.id} style={{ listStyle: 'none', margin: '10px 0', display: 'flex', alignItems: 'center' }}>
             <input
               type="checkbox"
               checked={t.completed}
               onChange={() => toggleComplete(t.id)}
               style={{ marginRight: '10px' }}
             />
-            <span style={{ textDecoration: t.completed ? 'line-through' : 'none' }}>
+            <span style={{
+              textDecoration: t.completed ? 'line-through' : 'none',
+              flexGrow: 1
+            }}>
               {t.text}
             </span>
+            <button onClick={() => handleDelete(t.id)} style={{ marginLeft: '10px' }}>🗑️</button>
           </li>
         ))}
       </ul>
@@ -54,4 +63,3 @@ function App() {
 }
 
 export default App;
-
