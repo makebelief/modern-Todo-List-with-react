@@ -6,8 +6,20 @@ function App() {
 
   const handleAdd = () => {
     if (task.trim() === '') return;
-    setTasks([...tasks, task]);
+    const newTask = {
+      id: Date.now(),
+      text: task,
+      completed: false
+    };
+    setTasks([...tasks, newTask]);
     setTask('');
+  };
+
+  const toggleComplete = (id) => {
+    const updatedTasks = tasks.map((t) =>
+      t.id === id ? { ...t, completed: !t.completed } : t
+    );
+    setTasks(updatedTasks);
   };
 
   return (
@@ -22,9 +34,19 @@ function App() {
       />
       <button onClick={handleAdd} style={{ padding: '10px' }}>Add</button>
 
-      <ul style={{ textAlign: 'left' }}>
-        {tasks.map((t, index) => (
-          <li key={index}>{t}</li>
+      <ul style={{ textAlign: 'left', padding: '0' }}>
+        {tasks.map((t) => (
+          <li key={t.id} style={{ listStyle: 'none', margin: '10px 0' }}>
+            <input
+              type="checkbox"
+              checked={t.completed}
+              onChange={() => toggleComplete(t.id)}
+              style={{ marginRight: '10px' }}
+            />
+            <span style={{ textDecoration: t.completed ? 'line-through' : 'none' }}>
+              {t.text}
+            </span>
+          </li>
         ))}
       </ul>
     </div>
@@ -32,3 +54,4 @@ function App() {
 }
 
 export default App;
+
