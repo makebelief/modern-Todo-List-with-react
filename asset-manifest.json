@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/modern-Todo-List-with-react/static/css/main.8c32c6d1.css",
+    "main.js": "/modern-Todo-List-with-react/static/js/main.2a20839d.js",
+    "index.html": "/modern-Todo-List-with-react/index.html",
+    "main.8c32c6d1.css.map": "/modern-Todo-List-with-react/static/css/main.8c32c6d1.css.map",
+    "main.2a20839d.js.map": "/modern-Todo-List-with-react/static/js/main.2a20839d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8c32c6d1.css",
+    "static/js/main.2a20839d.js"
+  ]
+}
